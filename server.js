@@ -24,14 +24,21 @@ const transporter = nodemailer.createTransport({
 // API endpoint to handle form submissions
 app.post('/send-email', (req, res) => {
     const { first_name, last_name, email, mobile_no, message } = req.body;
+    let DOS = new Date();
 
-    console.log(email);
     // Email options
     const mailOptions = {
-        from: email,
         to: process.env.MY_EMAIL,
-        subject: `${first_name} ${last_name} - ${mobile_no}`,
-        text: message
+        subject: `My-Portfolio - ${first_name} ${last_name}`,
+        text: `\n
+        Name: ${first_name} ${last_name}\n
+        Email: ${email} \n
+        Mobile number: ${mobile_no}\n 
+        \n
+        Message: ${message}\n 
+        \n
+        \n
+        DOS: ${DOS}`,
     };
 
     // Send the email
