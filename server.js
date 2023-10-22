@@ -21,6 +21,10 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+app.get('/', (req, res) => {
+    res.status(200).send('All good 🤝');
+})
+
 // API endpoint to handle form submissions
 app.post('/send-email', (req, res) => {
     const { first_name, last_name, email, mobile_no, message } = req.body;
